@@ -1,0 +1,48 @@
+detalhes.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do Profissional</title>
+  <style>
+    :root { --laranja: #FFA500; --preto: #000; --cinza-claro: #f8f8f8; --branco: #fff; }
+    body { font-family: Arial, sans-serif; background-color: var(--cinza-claro); margin: 0; padding: 0; color: #333; }
+    header { background-color: var(--preto); color: var(--laranja); padding: 1.5rem; text-align: center; }
+    main { max-width: 600px; margin: 2rem auto; background: var(--branco); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+    img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; }
+    a { display: inline-block; margin-top: 1rem; background-color: var(--laranja); color: var(--preto); padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 8px; }
+    a:hover { background-color: #e69500; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Detalhes do Profissional</h1>
+</header>
+
+<main>
+  <img id="foto" src="" alt="Foto do profissional">
+  <h2 id="nome"></h2>
+  <h3 id="especialidade"></h3>
+  <p id="descricao"></p>
+  <a href="busca.html">Voltar à busca</a>
+</main>
+
+<script>
+  const profissional = JSON.parse(localStorage.getItem('profissionalSelecionado'));
+  if (profissional) {
+    document.getElementById('foto').src = profissional.foto;
+    document.getElementById('foto').alt = `Foto de ${profissional.nome}`;
+    document.getElementById('nome').textContent = profissional.nome;
+    document.getElementById('especialidade').textContent = profissional.especialidade;
+    document.getElementById('descricao').textContent = profissional.descricao;
+  } else {
+    document.querySelector('main').innerHTML = '<p>Profissional não encontrado. <a href="busca.html">Voltar</a></p>';
+  }
+</script>
+
+</body>
+</html>
